@@ -18,10 +18,6 @@ module.exports = class Angel extends Client {
             throw new Error('options.prefix is an essential requirement.');
         }
 
-        if (!fs.existsSync(options.commandPath)) {
-            throw new Error('Command directory is an essential requirement.');
-        }
-
         if (options.selfbot && typeof !options.selfbot == Boolean) {
             throw new TypeError('options.selfbot has to be boolean.');
         }
@@ -117,6 +113,10 @@ module.exports = class Angel extends Client {
     }
 
     async _loadCommands() {
+        let commandsExist = fs.existsSync(this.commandPath);
+
+        if (!commandsExist) this.commandPath = path.join(__dirname, '../commands');
+
         return fs.readdir(this.commandPath, async (err, dir) => {
             if (err) throw new Error(err);
 
