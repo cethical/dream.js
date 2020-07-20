@@ -129,7 +129,7 @@ name | String | The inhibitor name *
 ```js
 const { Inhibitor } = require('dream.js');
 
-module.exports = class extends Event {
+module.exports = class extends Inhibitor {
     constructor(...args) {
         super(...args, {
             name: 'missingArgs' // The inhibitor name
