@@ -60,17 +60,6 @@ client.login();
 ## Creating a Command 
 Creating a command with dream.js
 
-Name | Type | Description
------|------|------
-name | String | The command name *
-description | String | The command description
-usage | String | The command usage
-inhibitors | Array | Put all inhibitor names in here
-aliases | Array | The command aliases
-cooldown | Number | Prevents spam
-guildOnly | Boolean | Disable DM commands
-del | Boolean | Deletes the command message
-
 ```js
 const { Command } = require('dream.js');
 
@@ -94,12 +83,19 @@ module.exports = class extends Command {
 }
 ```
 
-## Creating a Event
-Creating a event with dream.js
-
 Name | Type | Description
 -----|------|------
-name | String | The event name *
+name | String | The command name *
+description | String | The command description
+usage | String | The command usage
+inhibitors | Array | Put all inhibitor names in here
+aliases | Array | The command aliases
+cooldown | Number | Prevents spam
+guildOnly | Boolean | Disable DM commands
+del | Boolean | Deletes the command message
+
+## Creating a Event
+Creating a event with dream.js
 
 ```js
 const { Event } = require('dream.js');
@@ -119,12 +115,12 @@ module.exports = class extends Event {
 }
 ```
 
-## Creating a Inhibitor
-Creating a inhibitor with dream.js
-
 Name | Type | Description
 -----|------|------
-name | String | The inhibitor name *
+name | String | The event name *
+
+## Creating a Inhibitor
+Creating a inhibitor with dream.js
 
 ```js
 const { Inhibitor } = require('dream.js');
@@ -141,5 +137,9 @@ module.exports = class extends Inhibitor {
     }
 }
 ```
+
+Name | Type | Description
+-----|------|------
+name | String | The inhibitor name *
 
 created by matt
