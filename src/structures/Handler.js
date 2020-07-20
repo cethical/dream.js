@@ -7,15 +7,15 @@ module.exports = class Handler {
 
     async _handleMsg(msg) {
         const { prefix, commands, inhibitors } = this.client;
-        let mentioned = msg.mentions.users.first();
 
-        if (!this.client.selfbot && mentioned == this.client.user) {
+        if (!this.client.selfbot && msg.mentions.users.first() == this.client.user) {
             let command = commands.find(x => x.name.toLowerCase().includes('help'));
 
             if (command) return command.run(msg);
         }
 
-        if (!this._validate(msg)) return;
+        if (this.client.selfbot && msg.author.id != this.client.user.id) return;
+        if (msg.author.bot || !msg.content.startsWith(this.client.prefix)) return;
 
         const args = msg.content.slice(prefix.length).trim().split(/ +/g);
         const trigger = args.shift().toLowerCase();
@@ -52,14 +52,5 @@ module.exports = class Handler {
         } finally {
             if (this.client.typing) msg.channel.stopTyping();
         }
-    }
-
-    async _validate(msg) {
-        if (this.client.selfbot && msg.author.id != this.client.user.id) return;
-
-        if (msg.author.bot) return false;
-        if (!msg.content.startsWith(this.client.prefix)) return false;
-
-        return true;
     }
 }
