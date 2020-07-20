@@ -1,0 +1,21 @@
+{
+  "name": "angel",
+  "version": "1.0.0",
+  "description": "Discord.JS Framework",
+  "main": "src/index.js",
+  "dependencies": {
+    "discord.js": "^12.2.0",
+    "fs": "^0.0.1-security",
+    "mongoose": "^5.9.25",
+    "path": "^0.12.7"
+  },
+  "devDependencies": {},
+  "keywords": [
+    "discord",
+    "discord.js",
+    "discord.js framework",
+    "discord-api"
+  ],
+  "author": "matt",
+  "license": "ISC"
+}
