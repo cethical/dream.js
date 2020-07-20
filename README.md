@@ -7,22 +7,6 @@ A simple to use [discord.js](https://discord.js.org/) framework, easy to create 
 ## Creating a Client
 Creating the client that will run everything you don't need to code anymore.
 
-Name | Type | Description
------|------|------
-commandPath | String | The command directory *
-eventPath | String | The event directory
-inhibitorPath | String | The inhibitor directory
-selfbot | Boolean | Connect your user account
-mobile | Boolean | Displays the mobile indicator for your bot
-dev | Array | Change to string if selfbot is true
-token | String | The bot token *
-prefix | String | The prefix for the bot *
-activity | Object | Status for the bot
-activity.name | String | The status message
-activity.type | String | The status type, has to be uppercased
-activity.url | String | The status url for the streaming type
-activity.status | String | The status
-
 ```js
 const { Client } = require('dream.js');
 const path = require('path');
@@ -56,6 +40,22 @@ const client = new Client({
 
 client.login();
 ```
+
+Name | Type | Description
+-----|------|------
+commandPath | String | The command directory *
+eventPath | String | The event directory
+inhibitorPath | String | The inhibitor directory
+selfbot | Boolean | Connect your user account
+mobile | Boolean | Displays the mobile indicator for your bot
+dev | Array | Change to string if selfbot is true
+token | String | The bot token *
+prefix | String | The prefix for the bot *
+activity | Object | Status for the bot
+activity.name | String | The status message
+activity.type | String | The status type, has to be uppercased
+activity.url | String | The status url for the streaming type
+activity.status | String | The status
 
 ## Creating a Command 
 Creating a command with dream.js
