@@ -154,7 +154,7 @@ module.exports = class Angel extends Client {
 
                 aliases = [];
 
-                console.log(`[INIT] [Client.js] [${dirName}] Loaded: ${subDir.length} ${subDir.length < 1 ? 'commands' : 'command'}`);
+                console.log(`[INIT] [Client.js] [${dirName}] Loaded: ${subDir.length} ${subDir.length > 1 ? 'commands' : 'command'}`);
             }
         });
     }
@@ -183,7 +183,7 @@ module.exports = class Angel extends Client {
                 }
             });
 
-            console.log(`[INIT] [CLient.js] Loaded: ${files.length} ${files.length < 1 ? 'inhibitors' : 'inhibitor'}`);
+            console.log(`[INIT] [CLient.js] Loaded: ${files.length} ${files.length > 1 ? 'inhibitors' : 'inhibitor'}`);
         });
     }
 
@@ -213,7 +213,7 @@ module.exports = class Angel extends Client {
                 }
             });
 
-            console.log(`[INIT] [CLient.js] Loaded: ${files.length} ${files.length < 1 ? 'events' : 'event'}`);
+            console.log(`[INIT] [CLient.js] Loaded: ${files.length} ${files.length > 1 ? 'events' : 'event'}`);
         });
     }
 
