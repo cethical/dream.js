@@ -26,6 +26,12 @@ module.exports = class Handler {
         try {
             if (this.client.typing) msg.channel.startTyping();
 
+            let cooldown = cmd.cooldowns.get(msg.author.id);
+            let inhibitor = inhibitors.find(x => x.name.toLowerCase().includes('cooldown'));
+
+            if (cmd.guildOnly && !msg.guild) return;
+            if (cmd.cooldown && cooldown && inhibitor) inhibitor.run(msg, args, cmd);
+
             if (cmd.inhibitors && cmd.inhibitors.length > 0) {
                 for (let cmdInhibitor of cmd.inhibitors) {
                     let inhibitor = inhibitors.find(x => x.name == cmdInhibitor);
@@ -35,12 +41,6 @@ module.exports = class Handler {
                     if (response) return msg.channel.send(response);
                 }
             }
-
-            let cooldown = cmd.cooldowns.get(msg.author.id);
-            let inhibitor = inhibitors.find(x => x.name.toLowerCase().includes('cooldown'));
-
-            if (cmd.guildOnly && !msg.guild) return;
-            if (cmd.cooldown && cooldown && inhibitor) inhibitor.run(msg, args, cmd);
 
             if (!this.client.selfbot && !cooldown) {
                 cmd._setCooldown(msg.author.id);
