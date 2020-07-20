@@ -6,9 +6,16 @@ module.exports = class Handler {
     }
 
     async _handleMsg(msg) {
-        if (!this._validate(msg)) return;
-
         const { prefix, commands, inhibitors } = this.client;
+        let mentioned = msg.mentions.users.first();
+
+        if (!this.client.selfbot && mentioned == this.client.user) {
+            let command = commands.find(x => x.name.toLowerCase().includes('help'));
+
+            return command.run(msg);
+        }
+
+        if (!this._validate(msg)) return;
 
         const args = msg.content.slice(prefix.length).trim().split(/ +/g);
         const trigger = args.shift().toLowerCase();
