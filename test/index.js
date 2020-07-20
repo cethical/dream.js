@@ -1,4 +1,4 @@
-const { Client } = require('../src');
+const { Client } = require('dream.js');
 const path = require('path');
 
 let inhibitorPath = path.join(__dirname, 'inhibitors');
@@ -6,19 +6,26 @@ let commandPath = path.join(__dirname, 'commands');
 let eventPath = path.join(__dirname, 'events');
 
 const client = new Client({
-    token: 'NzIzODQ1MTk2MDU1MzE0NTIy.XxOJ9w.co-f1qWeb2xpBtcH-VKtugCi9Pg',
-    dev: ['144187884587450369'],
-    prefix: '-',
-    typing: true,
-    mobile: true,
-    activity: {
-        type: 'LISTENING',
-        name: (client) => `${client.prefix}help`
+    inhibitorPath, // Inhibitor directory
+    commandPath, // Command directory
+    eventPath, // Event directory
+
+    selfbot: false, // Connect your user account
+    mobile: false, // Displays the mobile indicator for your bot
+    typing: false, // Makes the bot type when executing a command
+
+    activity: { // Status for the bot
+        name: (client) => `${client.prefix}help`, // Works without a function
+        status: "online", // online, idle, dnd or invisible
+        type: "STREAMING", // STREAMING, WATCHING, PLAYING or LISTENING
+        url: "https://twitch.tv/ " // For STREAMING type
     },
 
-    inhibitorPath,
-    commandPath,
-    eventPath
+    readyMsg: (client) => `Connected as ${client.user.tag}`, // Not required, also works without the function
+
+    dev: [], // If selfbot is enabled you don't need the array
+    token: "", // The token for the bot
+    prefix: "", // The prefix for the bot
 });
 
 client.login();
