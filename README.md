@@ -48,6 +48,7 @@ eventPath | String | The event directory
 inhibitorPath | String | The inhibitor directory
 selfbot | Boolean | Connect your user account
 mobile | Boolean | Displays the mobile indicator for your bot
+readyMsg | String | Logs that the bot is online, not required
 dev | Array | Change to string if selfbot is true
 token | String | The bot token *
 prefix | String | The prefix for the bot *
