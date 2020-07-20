@@ -12,7 +12,7 @@ module.exports = class Handler {
         if (!this.client.selfbot && mentioned == this.client.user) {
             let command = commands.find(x => x.name.toLowerCase().includes('help'));
 
-            return command.run(msg);
+            if (command) return command.run(msg);
         }
 
         if (!this._validate(msg)) return;
