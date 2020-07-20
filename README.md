@@ -15,8 +15,8 @@ inhibitorPath | String | The inhibitor directory
 selfbot | Boolean | Connect your user account
 mobile | Boolean | Displays the mobile indicator for your bot
 dev | Array | Change to string if selfbot is true
-token | String | The bot token
-prefix | String | The prefix for the bot
+token | String | The bot token *
+prefix | String | The prefix for the bot *
 activity | Object | Status for the bot
 activity.name | String | The status message
 activity.type | String | The status type, has to be uppercased
@@ -31,11 +31,9 @@ let inhibitorPath = path.join(__dirname, 'inhibitors');
 let commandPath = path.join(__dirname, 'commands');
 let eventPath = path.join(__dirname, 'events');
 
-// * = essential requirement
-
 const client = new Client({
     inhibitorPath, // Inhibitor directory
-    commandPath, // Command directory *
+    commandPath, // Command directory
     eventPath, // Event directory
 
     selfbot: false, // Connect your user account
@@ -64,7 +62,7 @@ Creating a command with dream.js
 
 Name | Type | Description
 -----|------|------
-name | String | The command name
+name | String | The command name *
 description | String | The command description
 usage | String | The command usage
 inhibitors | Array | Put all inhibitor names in here
@@ -101,7 +99,7 @@ Creating a event with dream.js
 
 Name | Type | Description
 -----|------|------
-name | String | The event name
+name | String | The event name *
 
 ```js
 const { Event } = require('dream.js');
@@ -126,7 +124,7 @@ Creating a inhibitor with dream.js
 
 Name | Type | Description
 -----|------|------
-name | String | The inhibitor name
+name | String | The inhibitor name *
 
 ```js
 const { Inhibitor } = require('dream.js');
